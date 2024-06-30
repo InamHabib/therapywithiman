@@ -5,50 +5,51 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
-import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
-import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
-import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import LockRoundedIcon from '@mui/icons-material/LockRounded';
+import SpaRoundedIcon from '@mui/icons-material/SpaRounded';
+import BuildRoundedIcon from '@mui/icons-material/BuildRounded';
+import ContactSupportRoundedIcon from '@mui/icons-material/ContactSupportRounded';
+import AssignmentTurnedInRoundedIcon from '@mui/icons-material/AssignmentTurnedInRounded';
+
 
 const items = [
   {
-    icon: <SettingsSuggestRoundedIcon />,
+    icon: <FavoriteRoundedIcon />,
     title: "Compassionate Care",
     description:
       "Experience our commitment to providing empathetic and personalized therapy sessions, tailored to your unique journey towards healing and self-discovery.",
   },
   {
-    icon: <ConstructionRoundedIcon />,
+    icon: <LockRoundedIcon />,
     title: "Trust and Confidentiality",
     description:
       "Step into a safe and supportive environment built on trust, where your confidentiality is paramount. Our therapists create a space for you to freely explore your thoughts and emotions without judgment.",
   },
   {
-    icon: <ThumbUpAltRoundedIcon />,
+    icon: <SpaRoundedIcon />,
     title: "Holistic Approach",
     description:
       "Benefit from our holistic approach to mental health, addressing not just symptoms but also underlying factors contributing to your well-being. We prioritize your overall wellness, integrating various therapeutic techniques for comprehensive support.",
   },
   {
-    icon: <AutoFixHighRoundedIcon />,
+    icon: <BuildRoundedIcon />,
     title: "Innovative Solutions",
     description:
       "Stay at the forefront of therapy with our innovative approaches and tools designed to enhance your therapeutic experience. From online sessions to interactive resources, we leverage technology to make therapy more accessible and engaging.",
   },
   {
-    icon: <SupportAgentRoundedIcon />,
+    icon: <ContactSupportRoundedIcon />,
     title: "Responsive Support",
     description:
       "Feel supported every step of the way with our dedicated team of therapists and staff. Whether you have questions, need assistance, or simply want to share your progress, we're here to provide reliable and compassionate support.",
   },
   {
-    icon: <QueryStatsRoundedIcon />,
+    icon: <AssignmentTurnedInRoundedIcon />,
     title: "Attention to Detail",
     description:
       "Experience therapy with attention to detail, where every aspect of your session is carefully considered to ensure a comfortable and enriching experience. From the ambiance of our space to the personalized guidance of our therapists, we prioritize your well-being in every detail.",
-  },
+  }
 ];
 
 
@@ -60,8 +61,9 @@ export default function Highlights() {
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
         color: 'white',
-        bgcolor: '#fce1ff',
+       
       }}
+      style={{  backgroundImage: 'linear-gradient(180deg, #FFDFD3, #FFF)'}}
     >
       <Container
         sx={{
@@ -71,6 +73,7 @@ export default function Highlights() {
           alignItems: 'center',
           gap: { xs: 3, sm: 6 },
         }}
+        id="therapeuticadvantages"
       >
         <Box
           sx={{

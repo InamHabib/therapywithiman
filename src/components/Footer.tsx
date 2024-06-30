@@ -27,7 +27,8 @@ function Copyright() {
   );
 }
 
-export default function Footer() {
+export default function Footer(props) {
+  console.log(props.inam)
   return (
     <Container
       sx={{

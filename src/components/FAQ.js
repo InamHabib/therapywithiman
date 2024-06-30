@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function FAQ() {
   const [expanded, setExpanded] = React.useState(false);
@@ -17,15 +17,25 @@ export default function FAQ() {
   };
 
   return (
+    <Box
+    id="highlights"
+    sx={{
+      pt: { xs: 4, sm: 12 },
+      pb: { xs: 8, sm: 16 },
+      color: 'white',
+     
+    }}
+    style={{  backgroundImage: 'linear-gradient(180deg, #FFE4E1, #FFF)'}}
+  >
     <Container
       id="faq"
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         gap: { xs: 3, sm: 6 },
       }}
     >
@@ -34,16 +44,16 @@ export default function FAQ() {
         variant="h4"
         color="text.primary"
         sx={{
-          width: { sm: '100%', md: '60%' },
-          textAlign: { sm: 'left', md: 'center' },
+          width: { sm: "100%", md: "60%" },
+          textAlign: { sm: "left", md: "center" },
         }}
       >
         Frequently asked questions
       </Typography>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: "100%" }}>
         <Accordion
-          expanded={expanded === 'panel1'}
-          onChange={handleChange('panel1')}
+          expanded={expanded === "panel1"}
+          onChange={handleChange("panel1")}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -51,25 +61,26 @@ export default function FAQ() {
             id="panel1d-header"
           >
             <Typography component="h3" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
+              What is therapy?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
               variant="body2"
               gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+              sx={{ maxWidth: { sm: "100%", md: "70%" } }}
+                            className="faq-answers"
             >
-              You can reach our customer support team by emailing
-              <Link> support@email.com </Link>
-              or calling our toll-free number. We&apos;re here to assist you
-              promptly.
+              Therapy, also known as counseling or psychotherapy, is a process
+              where a trained professional helps individuals, couples, or groups
+              address and manage their mental health issues, emotional
+              challenges, and life stressors.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded === 'panel2'}
-          onChange={handleChange('panel2')}
+          expanded={expanded === "panel2"}
+          onChange={handleChange("panel2")}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -77,49 +88,56 @@ export default function FAQ() {
             id="panel2d-header"
           >
             <Typography component="h3" variant="subtitle2">
-              Can I return the product if it doesn&apos;t meet my expectations?
+              How do I know if I need therapy?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
               variant="body2"
               gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+              sx={{ maxWidth: { sm: "100%", md: "70%" } }}
+              className="faq-answers"
             >
-              Absolutely! We offer a hassle-free return policy. If you&apos;re not
-              completely satisfied, you can return the product within [number of
-              days] days for a full refund or exchange.
+              If you are experiencing persistent feelings of sadness, anxiety,
+              stress, or if you're having trouble coping with everyday life, it
+              might be helpful to speak with a therapist. Therapy can also be
+              beneficial for those dealing with major life changes, relationship
+              issues, or traumatic experiences.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded === 'panel3'}
-          onChange={handleChange('panel3')}
+          expanded={expanded === "panel3"}
+          onChange={handleChange("panel3")}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3d-content"
             id="panel3d-header"
+              className="faq-answers"
           >
             <Typography component="h3" variant="subtitle2">
-              What makes your product stand out from others in the market?
+              What should I expect during my first session?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
               variant="body2"
               gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+              sx={{ maxWidth: { sm: "100%", md: "70%" } }}
+                            className="faq-answers"
             >
-              Our product distinguishes itself through its adaptability, durability,
-              and innovative features. We prioritize user satisfaction and
-              continually strive to exceed expectations in every aspect.
+              During your first session, you will meet with your therapist to
+              discuss your reasons for seeking therapy, your goals, and any
+              concerns you may have. This initial session is an opportunity for
+              you and your therapist to get to know each other and establish a
+              plan for your therapy.
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion
-          expanded={expanded === 'panel4'}
-          onChange={handleChange('panel4')}
+          expanded={expanded === "panel4"}
+          onChange={handleChange("panel4")}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -127,23 +145,26 @@ export default function FAQ() {
             id="panel4d-header"
           >
             <Typography component="h3" variant="subtitle2">
-              Is there a warranty on the product, and what does it cover?
+              Is therapy confidential?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography
               variant="body2"
               gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+              sx={{ maxWidth: { sm: "100%", md: "70%" } }}
+                            className="faq-answers"
             >
-              Yes, our product comes with a [length of warranty] warranty. It covers
-              defects in materials and workmanship. If you encounter any issues
-              covered by the warranty, please contact our customer support for
-              assistance.
+              Yes, therapy sessions are confidential. Your privacy is important
+              to us, and we adhere to strict confidentiality guidelines. There
+              are some exceptions required by law, such as situations involving
+              harm to yourself or others, which your therapist will explain to
+              you.
             </Typography>
           </AccordionDetails>
         </Accordion>
       </Box>
     </Container>
+    </Box>
   );
 }

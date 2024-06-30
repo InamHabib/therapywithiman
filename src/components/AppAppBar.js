@@ -1,23 +1,37 @@
+// /src/components/AppAppBar.js
+
 import * as React from "react";
 import PropTypes from "prop-types";
-
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
-import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Grid } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import StarIcon from "@mui/icons-material/Star";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import HelpIcon from "@mui/icons-material/Help";
+import ReviewsIcon from "@mui/icons-material/Reviews";
 import ToggleColorMode from "./ToggleColorMode";
 import logo from "../images/logo.png";
+
 const logoStyle = {
-  width: "140px",
+  width: "80px",
   height: "auto",
   cursor: "pointer",
 };
+
+const menuItems = [
+  { text: "Therapeutic Approach", icon: <HomeIcon /> },
+  { text: "Testimonials", icon: <ReviewsIcon /> },
+  { text: "Therapeutic Advantages", icon: <StarIcon /> },
+  { text: "FAQ", icon: <HelpIcon /> },
+];
 
 function AppAppBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
@@ -41,176 +55,102 @@ function AppAppBar({ mode, toggleColorMode }) {
   };
 
   return (
-    <div>
-      <AppBar
-        sx={{
-          boxShadow: 0,
-          bgcolor: "transparent",
-          backgroundImage: "none",
-          mt: 2,
-          position:"absolute"
-        }}
-      >
-        <Container maxWidth="lg">
-          <Toolbar
-            variant="regular"
-            sx={(theme) => ({
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexShrink: 0,
-              borderRadius: "999px",
-
-              maxHeight: 40,
-            })}
-          >
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: "flex",
-                alignItems: "center",
-                ml: "-18px",
-                px: 0,
-              }}
-            >
+    <AppBar
+      position="absolute"
+      sx={{
+        boxShadow: 0,
+        bgcolor: "transparent",
+        backgroundImage: "none",
+        mt: 0,
+        borderRadius: 2,
+        zIndex: 1300, // Ensures the AppBar is on top of other elements
+      }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            py: 1,
+          }}
+        >
+          <Grid container alignItems="center">
+            <Grid item xs={12} md="auto" sx={{ textAlign: { xs: "center", md: "left" } }}>
               <img
-                src={
-                  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg"
-                }
+                src={logo}
                 style={logoStyle}
-                alt="logo of sitemark"
+                alt="logo"
               />
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            </Grid>
+            <Grid item sx={{ ml: 14, display: { xs: "none", md: "flex" }, alignItems: "center" }}>
+              {menuItems.map(({ text, icon }) => (
                 <MenuItem
-                  onClick={() => scrollToSection("features")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Therapeutic Approach
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("testimonials")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Testimonials
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("highlights")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Therapeutic Advantages
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("pricing")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Pricing
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection("faq")}
-                  sx={{ py: "6px", px: "12px" }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
-                  </Typography>
-                </MenuItem>
-              </Box>
-            </Box>
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                gap: 0.5,
-                alignItems: "center",
-              }}
-            >
-              <Button variant="contained" style={{background:"rgb(144, 202, 249) !important"}}>Book</Button>
-            </Box>
-            <Box sx={{ display: { sm: "", md: "none" } }}>
-              <Button
-                variant="text"
-                color="primary"
-                aria-label="menu"
-                onClick={toggleDrawer(true)}
-                sx={{ minWidth: "30px", p: "4px" }}
-              >
-                <MenuIcon />
-              </Button>
-              <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-                <Box
+                  key={text}
+                  onClick={() => scrollToSection(text.replace(/ /g, "").toLowerCase())}
                   sx={{
-                    minWidth: "60dvw",
-                    p: 2,
-                    backgroundColor: "background.paper",
-                    flexGrow: 1,
+                    py: "6px",
+                    px: "12px",
+                    mx: 1,
+                    transition: "0.3s",
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      borderRadius: "5px",
+                    },
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
-                  <Box
+                  {icon}
+                  <Typography variant="body2" color="text.primary" sx={{ ml: 1 }}>
+                    {text}
+                  </Typography>
+                </MenuItem>
+              ))}
+            </Grid>
+          </Grid>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+              <Box
+                sx={{ width: 250 }}
+                role="presentation"
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+              >
+                {menuItems.map(({ text, icon }) => (
+                  <MenuItem
+                    key={text}
+                    onClick={() => scrollToSection(text.replace(/ /g, "").toLowerCase())}
                     sx={{
+                      py: "6px",
+                      px: "12px",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      },
                       display: "flex",
-                      flexDirection: "column",
-                      alignItems: "end",
-                      flexGrow: 1,
+                      alignItems: "center",
                     }}
                   >
-                    <ToggleColorMode
-                      mode={mode}
-                      toggleColorMode={toggleColorMode}
-                    />
-                  </Box>
-                  <MenuItem onClick={() => scrollToSection("features")}>
-                    Features
+                    {icon}
+                    <Typography variant="body2" color="text.primary" sx={{ ml: 1 }}>
+                      {text}
+                    </Typography>
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("testimonials")}>
-                    Testimonials
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("highlights")}>
-                    Highlights
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("pricing")}>
-                    Pricing
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("faq")}>
-                    FAQ
-                  </MenuItem>
-                  <Divider />
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
-                      sx={{ width: "100%" }}
-                    >
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
-                      sx={{ width: "100%" }}
-                    >
-                      Sign in
-                    </Button>
-                  </MenuItem>
-                </Box>
-              </Drawer>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </div>
+                ))}
+              </Box>
+            </Drawer>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 

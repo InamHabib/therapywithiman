@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.faq-answers{
+  text-align: left;
+}
+
+.chip:hover {
+  background-color: #FFE8EE !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+.chip{
+  border-color: #FFE8EE !important;
+  background-color: #FFE8EE !important;
+}
+.chip span{
+  color: black !important;
+  
+}
