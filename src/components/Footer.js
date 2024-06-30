@@ -58,7 +58,6 @@ export default function Footer() {
           <Link color="text.secondary" href="#">
             Terms of Service
           </Link>
-          <Copyright />
         </div>
         <Stack
           direction="row"
